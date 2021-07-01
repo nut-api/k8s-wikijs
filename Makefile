@@ -2,24 +2,24 @@ all : start_postgres start_wiki port_forword
 
 ## POSTGRES
 POSTGRES=postgresql
-pgcfg=${POSTGRES}/postgres-configmap.yml
-pgstorage=${POSTGRES}/postgres-storage.yaml
-pgdeploy=${POSTGRES}/postgres-deployment.yaml
-pgservice=${POSTGRES}/postgres-service.yaml
+PGCFG=${POSTGRES}/postgres-configmap.yml
+PGSTORAGE=${POSTGRES}/postgres-storage.yaml
+PGDEPLOY=${POSTGRES}/postgres-deployment.yaml
+PGSERVICE=${POSTGRES}/postgres-service.yaml
 
 start_postgres:
-	kubectl apply -f ${pgcfg},${pgstorage},${pgdeploy},${pgservice}
+	kubectl apply -f ${PGCFG},${PGSTORAGE},${PGDEPLOY},${PGSERVICE}
 #	kubectl get service # extract ip of postgresql here and set it to ENV (POSTGRES_IP)
 
 ## WIKI
 WIKI=wikijs
-wikicfg=${WIKI}/wikijs-config.yaml
-wikideploy=${WIKI}/wikijs-deployment.yaml
-wikisecret=${WIKI}/wikijs-secret.yaml
-wikiservice=${WIKI}/wikijs-service.yaml
+WIKICFG=${WIKI}/wikijs-config.yaml
+WIKIDEPLOY=${WIKI}/wikijs-deployment.yaml
+WIKISECRET=${WIKI}/wikijs-secret.yaml
+WIKISERVICE=${WIKI}/wikijs-service.yaml
 
 start_wiki:
-	kubectl apply -f ${wikicfg},${wikisecret},${wikiservice},${wikideploy}
+	kubectl apply -f ${WIKICFG},${wikisecret},${wikiservice},${WIKIDEPLOY}
 #	kubectl get pod
 
 port_forword:
@@ -29,7 +29,7 @@ port_forword:
 #clean: delete_wiki delete_postgres
 #
 #delete_postgres:
-#	kubectl delete -f ${pgcfg},${pgstorage},${pgdeployment},${pgservice}
+#	kubectl delete -f ${PGCFG},${PGSTORAGE},${PGDEPLOYment},${PGSERVICE}
 #
 #delete_wiki:
-#	kubectl delete -f ${wikicfg},${wikisecret},${wikiservice},${wikideploy}
+#	kubectl delete -f ${WIKICFG},${wikisecret},${wikiservice},${WIKIDEPLOY}
