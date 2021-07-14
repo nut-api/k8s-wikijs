@@ -4,6 +4,7 @@ metadata:
   labels:
     app: wikijs
   name: wikijs
+  namespace: wikijs
 spec:
   replicas: 1
   selector:
