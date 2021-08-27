@@ -14,6 +14,6 @@ spec:
         prefix: /
     route:
     - destination:
-        host: wikijs
+        host: wikijs.wikijs.svc.cluster.local
         port:
           number: 80
